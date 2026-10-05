@@ -1,0 +1,15 @@
+{
+  "eventType": "PAYMENT_COMPLETED",
+  "version": 1,
+  "fields": {
+    "eventId":   {"type": "STRING",  "required": true},
+    "orderId":   {"type": "STRING",  "required": true},
+    "amount":    {"type": "DECIMAL", "required": true},
+    "currency":  {"type": "STRING",  "required": true},
+    "method":    {"type": "STRING",  "required": true}
+  },
+  "qualityRules": [
+    {"field": "amount", "operator": "GREATER_THAN", "expectedValue": "0"},
+    {"field": "method", "operator": "IN",           "expectedValue": "CARD,APPLE_PAY,PAYPAL,BANK_TRANSFER"}
+  ]
+}

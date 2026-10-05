@@ -1,0 +1,16 @@
+{
+  "eventType": "ORDER_CREATED",
+  "version": 1,
+  "fields": {
+    "eventId":    {"type": "STRING",  "required": true},
+    "customerId": {"type": "STRING",  "required": true},
+    "amount":     {"type": "DECIMAL", "required": true},
+    "currency":   {"type": "STRING",  "required": true},
+    "status":     {"type": "STRING",  "required": true}
+  },
+  "qualityRules": [
+    {"field": "amount",   "operator": "GREATER_THAN", "expectedValue": "0"},
+    {"field": "currency", "operator": "IN",           "expectedValue": "USD,CAD,EUR,GBP"},
+    {"field": "status",   "operator": "IN",           "expectedValue": "CREATED,CONFIRMED,CANCELLED"}
+  ]
+}

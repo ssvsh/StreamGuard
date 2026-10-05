@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: validation-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/streamguard
+    redis:
+      host: localhost
+      port: 6379
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: streamguard-validator
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.streamguard.*"
+        spring.json.value.default.type: com.streamguard.common.model.EventEnvelope
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+server:
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    tags:
+      application: validation-service
+
+streamguard:
+  contract-service-url: http://localhost:8081
+  cache-ttl-minutes: 30
+  idempotency-ttl-hours: 24
+  generator:
+    enabled: false
+    rate-per-second: 50
+    bad-event-fraction: 0.05

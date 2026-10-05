@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: contract-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/streamguard
+server:
+  port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always

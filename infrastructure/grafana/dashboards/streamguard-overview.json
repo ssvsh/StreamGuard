@@ -1,0 +1,71 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "liveNow": false,
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Events Processed",
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 0},
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {"expr": "sum(rate(streamguard_events_processed_total[1m]))", "refId": "A"}
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Validation Failures / sec",
+      "gridPos": {"h": 4, "w": 6, "x": 6, "y": 0},
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {"expr": "sum(rate(streamguard_validation_failures_total[1m]))", "refId": "A"}
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Schema Drift Events",
+      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 0},
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {"expr": "sum(increase(streamguard_schema_drifts_total[5m]))", "refId": "A"}
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "LLM Failures",
+      "gridPos": {"h": 4, "w": 6, "x": 18, "y": 0},
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {"expr": "sum(increase(streamguard_llm_failures_total[5m]))", "refId": "A"}
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Validation Latency (p95)",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {"expr": "histogram_quantile(0.95, sum(rate(streamguard_validation_latency_seconds_bucket[1m])) by (le))", "refId": "A"}
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Kafka Throughput",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 4},
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "targets": [
+        {"expr": "sum(rate(streamguard_events_processed_total[1m]))", "refId": "A"}
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["streamguard"],
+  "templating": {"list": []},
+  "time": {"from": "now-1h", "to": "now"},
+  "timezone": "",
+  "title": "StreamGuard Overview",
+  "uid": "streamguard-overview",
+  "version": 1
+}

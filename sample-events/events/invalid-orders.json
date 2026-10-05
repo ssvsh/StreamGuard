@@ -1,0 +1,49 @@
+[
+  {
+    "eventType": "ORDER_CREATED",
+    "schemaVersion": 1,
+    "eventId": "ORD-9001",
+    "payload": {
+      "eventId": "ORD-9001",
+      "customerId": "C500",
+      "amount": "249.99",
+      "currency": "USD",
+      "status": "CREATED"
+    }
+  },
+  {
+    "eventType": "ORDER_CREATED",
+    "schemaVersion": 1,
+    "eventId": "ORD-9002",
+    "payload": {
+      "eventId": "ORD-9002",
+      "amount": 49.99,
+      "currency": "USD",
+      "status": "CREATED"
+    }
+  },
+  {
+    "eventType": "ORDER_CREATED",
+    "schemaVersion": 1,
+    "eventId": "ORD-9003",
+    "payload": {
+      "eventId": "ORD-9003",
+      "customerId": "C600",
+      "amount": -5.00,
+      "currency": "USD",
+      "status": "CREATED"
+    }
+  },
+  {
+    "eventType": "ORDER_CREATED",
+    "schemaVersion": 1,
+    "eventId": "ORD-9004",
+    "payload": {
+      "eventId": "ORD-9004",
+      "customerId": "C700",
+      "amount": 15.00,
+      "currency": "XYZ",
+      "status": "CREATED"
+    }
+  }
+]

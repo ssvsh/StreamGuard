@@ -1,0 +1,26 @@
+[
+  {
+    "eventType": "ORDER_CREATED",
+    "schemaVersion": 1,
+    "eventId": "ORD-1001",
+    "payload": {
+      "eventId": "ORD-1001",
+      "customerId": "C100",
+      "amount": 249.99,
+      "currency": "USD",
+      "status": "CREATED"
+    }
+  },
+  {
+    "eventType": "ORDER_CREATED",
+    "schemaVersion": 1,
+    "eventId": "ORD-1002",
+    "payload": {
+      "eventId": "ORD-1002",
+      "customerId": "C200",
+      "amount": 1299.00,
+      "currency": "EUR",
+      "status": "CONFIRMED"
+    }
+  }
+]
